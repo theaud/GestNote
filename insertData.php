@@ -1,10 +1,5 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 
 //--------------------------------------------------------------------------------------------------------
@@ -57,57 +52,25 @@ if (!$result) { die('Requête invalide : ' . mysql_error());}
 //--------------------------------------------------------------------------------------------------------
 ////-----------------------------------   contact       --------------------------------------------------
 //--------------------------------------------------------------------------------------------------------
-function inser_data_contact($data_base,$id,$address,$postalcode,$city,$fixphone,$mobilephone)
+function inser_data_contact($data_base,$id,$surname,$forename,$address,$postalcode,$city)
 {
-$SQL = "INSERT INTO `GestNotes`.`contact` (`id`, `birth`, `sex`, `registerdate`, `prev_school`, `photo`) 
+$SQL = "INSERT INTO `GestNotes`.`contact` (`id`, `surname`, `forename`, `address`, `postalcode`, `city`) 
 VALUES ('".$id."', '".$surname."', '".$forename."', '".$address."', '".$postalcode."', '".$city."')";
 $result = $data_base->query ($SQL);
 
 if (!$result) { die('Requête invalide : ' . mysql_error());}
 }
-/*
-CREATE TABLE `contact` (
-  `id` int(11) NOT NULL,
-  `surname` varchar(50) NOT NULL,
-  `forename` varchar(50) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `postalcode` varchar(10) NOT NULL,
-  `city` varchar(100) NOT NULL,
-  `fixphone` varchar(20) NOT NULL,
-  `mobilephone` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  PRIMARY KEY(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-    */
-    
+
 //--------------------------------------------------------------------------------------------------------
 ////-----------------------------------   doctor       --------------------------------------------------
 //--------------------------------------------------------------------------------------------------------
-function inser_data_doctor($data_base,$id,$address,$postalcode,$city,$fixphone,$mobilephone)
+function inser_data_doctor($data_base,$id,$address,$postalcode,$city,$fixphone,$mobilephone,$vaccine,$allergic,$medical_notes)
 {
-$SQL = "INSERT INTO `GestNotes`.`doctor` (`id`, `birth`, `sex`, `registerdate`, `prev_school`, `photo`) 
-VALUES ('".$id."', '".$address."', '".$postalcode."', '".$city."', '".$fixphone."', '".$mobilephone."')";
+$SQL = "INSERT INTO `GestNotes`.`doctor` 
+    (`id`, `surname`, `forename`, `fixphone`, `mobilephone`, `vaccine`, `allergic`, `medical_notes`) 
+VALUES ('".$id."', '".$address."', '".$postalcode."', '".$city."', '".$fixphone."',"
+        . " '".$mobilephone."', '".$vaccine."', '".$allergic."', '".$medical_notes."')";
 $result = $data_base->query ($SQL);
 
 if (!$result) { die('Requête invalide : ' . mysql_error());}
 }
-
-
-
-/*
-
-CREATE TABLE `doctor` (
-  `id` int(11) NOT NULL,
-  `surname` varchar(50) NOT NULL,
-  `forename` varchar(50) NOT NULL,
-  `fixphone` varchar(20) NOT NULL,
-  `mobilephone` varchar(20) NOT NULL,
-  `vaccine` varchar(255) NOT NULL,
-  `allergic` varchar(255) NOT NULL,
-  `medical_notes` varchar(255) NOT NULL,
-  PRIMARY KEY(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
- * 
- *  */
- 
