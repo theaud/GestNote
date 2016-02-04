@@ -33,7 +33,7 @@ if (!$result) { die('Requête invalide : ' . mysql_error());}
 //--------------------------------------------------------------------------------------------------------
 function inser_data_identity($data_base,$id,$birth,$sex,$registerdate,$prev_school,$marks)
 {
-$SQL = "INSERT INTO `GestNotes`.`student` (`id`, `birth`, `sex`, `registerdate`, `prev_school`, `photo`) 
+$SQL = "INSERT INTO `GestNotes`.`identity` (`id`, `birth`, `sex`, `registerdate`, `prev_school`, `marks`) 
 VALUES ('".$id."', '".$birth."', '".$sex."', '".$registerdate."', '".$prev_school."', '".$marks."')";
 $result = $data_base->query ($SQL);
 
@@ -46,9 +46,68 @@ if (!$result) { die('Requête invalide : ' . mysql_error());}
 //--------------------------------------------------------------------------------------------------------
 function inser_data_coordonate($data_base,$id,$address,$postalcode,$city,$fixphone,$mobilephone)
 {
-$SQL = "INSERT INTO `GestNotes`.`student` (`id`, `birth`, `sex`, `registerdate`, `prev_school`, `photo`) 
+$SQL = "INSERT INTO `GestNotes`.`coordonate` (`id`, `address`, `postalcode`, `city`, `fixphone`, `mobilephone`) 
 VALUES ('".$id."', '".$address."', '".$postalcode."', '".$city."', '".$fixphone."', '".$mobilephone."')";
 $result = $data_base->query ($SQL);
 
 if (!$result) { die('Requête invalide : ' . mysql_error());}
 }
+
+
+//--------------------------------------------------------------------------------------------------------
+////-----------------------------------   contact       --------------------------------------------------
+//--------------------------------------------------------------------------------------------------------
+function inser_data_contact($data_base,$id,$address,$postalcode,$city,$fixphone,$mobilephone)
+{
+$SQL = "INSERT INTO `GestNotes`.`contact` (`id`, `birth`, `sex`, `registerdate`, `prev_school`, `photo`) 
+VALUES ('".$id."', '".$surname."', '".$forename."', '".$address."', '".$postalcode."', '".$city."')";
+$result = $data_base->query ($SQL);
+
+if (!$result) { die('Requête invalide : ' . mysql_error());}
+}
+/*
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `surname` varchar(50) NOT NULL,
+  `forename` varchar(50) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `postalcode` varchar(10) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `fixphone` varchar(20) NOT NULL,
+  `mobilephone` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    */
+    
+//--------------------------------------------------------------------------------------------------------
+////-----------------------------------   doctor       --------------------------------------------------
+//--------------------------------------------------------------------------------------------------------
+function inser_data_doctor($data_base,$id,$address,$postalcode,$city,$fixphone,$mobilephone)
+{
+$SQL = "INSERT INTO `GestNotes`.`doctor` (`id`, `birth`, `sex`, `registerdate`, `prev_school`, `photo`) 
+VALUES ('".$id."', '".$address."', '".$postalcode."', '".$city."', '".$fixphone."', '".$mobilephone."')";
+$result = $data_base->query ($SQL);
+
+if (!$result) { die('Requête invalide : ' . mysql_error());}
+}
+
+
+
+/*
+
+CREATE TABLE `doctor` (
+  `id` int(11) NOT NULL,
+  `surname` varchar(50) NOT NULL,
+  `forename` varchar(50) NOT NULL,
+  `fixphone` varchar(20) NOT NULL,
+  `mobilephone` varchar(20) NOT NULL,
+  `vaccine` varchar(255) NOT NULL,
+  `allergic` varchar(255) NOT NULL,
+  `medical_notes` varchar(255) NOT NULL,
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ * 
+ *  */
+ 
